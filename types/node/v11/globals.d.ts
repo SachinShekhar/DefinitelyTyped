@@ -457,6 +457,7 @@ declare const Buffer: {
 *                                               *
 *-----------------------------------------------*/
 declare namespace NodeJS {
+    type BufferOrString = Buffer | Uint8Array | string;
     interface InspectOptions {
         /**
          * If set to `true`, getters are going to be
@@ -606,30 +607,30 @@ declare namespace NodeJS {
         eventNames(): Array<string | symbol>;
     }
 
-    interface ReadableStream extends EventEmitter {
+    interface ReadableStream<TChunk = BufferOrString> extends EventEmitter {
         readable: boolean;
-        read(size?: number): string | Buffer;
-        setEncoding(encoding: string): this;
+        read(size?: number): TChunk | null;
+        setEncoding(encoding: BufferEncoding): this;
         pause(): this;
         resume(): this;
         isPaused(): boolean;
-        pipe<T extends WritableStream>(destination: T, options?: { end?: boolean; }): T;
-        unpipe(destination?: WritableStream): this;
-        unshift(chunk: string | Buffer | Uint8Array): void;
-        wrap(oldStream: ReadableStream): this;
+        pipe<TStream extends WritableStream<TChunk>>(destination: TStream, options?: { end?: boolean; }): TStream;
+        unpipe(destination?: WritableStream<TChunk>): this;
+        unshift(chunk: TChunk | null): void;
+        wrap(oldStream: ReadableStream<TChunk>): this;
         [Symbol.asyncIterator](): AsyncIterableIterator<string | Buffer>;
     }
 
-    interface WritableStream extends EventEmitter {
+    interface WritableStream<TChunk = BufferOrString> extends EventEmitter {
         writable: boolean;
-        write(buffer: Buffer | Uint8Array | string, cb?: (err?: Error | null) => void): boolean;
-        write(str: string, encoding?: string, cb?: (err?: Error | null) => void): boolean;
+        write(buffer: TChunk, cb?: (err?: Error | null) => void): boolean;
+        write(str: TChunk, encoding?: BufferEncoding, cb?: (err?: Error | null) => void): boolean;
         end(cb?: () => void): void;
-        end(data: string | Uint8Array | Buffer, cb?: () => void): void;
-        end(str: string, encoding?: string, cb?: () => void): void;
+        end(data: TChunk, cb?: () => void): void;
+        end(str: TChunk, encoding?: BufferEncoding, cb?: () => void): void;
     }
 
-    interface ReadWriteStream extends ReadableStream, WritableStream { }
+    interface ReadWriteStream<TChunkIn = BufferOrString, TChunkOut = BufferOrString> extends ReadableStream<TChunkOut>, WritableStream<TChunkIn> { }
 
     interface Events extends EventEmitter { }
 
@@ -717,12 +718,12 @@ declare namespace NodeJS {
         [key: string]: string | undefined;
     }
 
-    interface WriteStream extends Socket {
+    interface WriteStream<TChunk = BufferOrString> extends Socket {
         readonly writableHighWaterMark: number;
         readonly writableLength: number;
         columns?: number;
         rows?: number;
-        _write(chunk: any, encoding: string, callback: (err?: null | Error) => void): void;
+        _write(chunk: TChunk, encoding: string, callback: (err?: null | Error) => void): void;
         _destroy(err: Error | null, callback: (err?: null | Error) => void): void;
         _final(callback: (err?: null | Error) => void): void;
         setDefaultEncoding(encoding: string): this;
@@ -730,7 +731,7 @@ declare namespace NodeJS {
         uncork(): void;
         destroy(error?: Error): void;
     }
-    interface ReadStream extends Socket {
+    interface ReadStream<TChunk = BufferOrString> extends Socket {
         readonly readableFlowing: boolean | null;
         readonly readableHighWaterMark: number;
         readonly readableLength: number;
@@ -738,7 +739,7 @@ declare namespace NodeJS {
         setRawMode?(mode: boolean): void;
         _read(size: number): void;
         _destroy(err: Error | null, callback: (err?: null | Error) => void): void;
-        push(chunk: any, encoding?: string): boolean;
+        push(chunk: TChunk, encoding?: string): boolean;
         destroy(error?: Error): void;
     }
 
