@@ -35,6 +35,7 @@
 //                 Thanik Bhongbhibhat <https://github.com/bhongy>
 //                 Minh Son Nguyen <https://github.com/nguymin4>
 //                 ExE Boss <https://github.com/ExE-Boss>
+//                 Sachin Shekhar <https://github.com/SachinShekhar>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 // NOTE: These definitions support NodeJS and TypeScript 3.1.
