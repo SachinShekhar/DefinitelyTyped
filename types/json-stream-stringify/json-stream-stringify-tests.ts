@@ -106,7 +106,7 @@ jsonStream = new JsonStreamStringify({
 });
 jsonStream = new JsonStreamStringify(ReadableStream('a', 'b', 'c'));
 {
-    const stream = new Readable();
+    const stream = new Readable<string | undefined>();
     const args = ['a', 'b', 'c'];
     Object.assign(stream, {
         firstRead: true,

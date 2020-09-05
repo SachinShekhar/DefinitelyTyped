@@ -8,7 +8,7 @@ fs.createReadStream("data.txt")
   .pipe(parser)
   .on("data", (obj) => undefined);
 
-const stream = ndjson.stringify({ encoding: "ascii" });
+const stream = ndjson.stringify<{ foo: string }>({ encoding: "ascii" });
 stream.on("data", (line) => undefined);
 stream.write({ foo: "bar" });
 stream.end();

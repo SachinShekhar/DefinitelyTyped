@@ -15,5 +15,5 @@ function* notAsync() {
 streamify();  // $ExpectError
 streamify(notGenerator());  // $ExpectError
 streamify(notAsync());  // $ExpectError
-streamify(generator());  // $ExpectType Readable
+streamify(generator());  // $ExpectType Readable<BufferOrString>
 streamify(generator()).pipe(process.stdout);

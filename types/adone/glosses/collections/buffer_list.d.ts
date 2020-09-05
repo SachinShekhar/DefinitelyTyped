@@ -30,7 +30,7 @@ declare namespace adone.collection {
         /**
          * Ends the stream
          */
-        end(chunk?: Buffer | string): void;
+        end(chunk?: NodeJS.BufferOrString): void;
         end(chunk?: () => void): void;
 
         /**

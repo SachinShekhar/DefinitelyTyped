@@ -13,5 +13,5 @@ const opts: search.Options = {
 search('libnpm'); // $ExpectType Promise<Result[]>
 search('libnpm', opts); // $ExpectType Promise<Result[]>
 search('libnpm', { detailed: true }); // $ExpectType Promise<DetailedResult[]>
-search.stream('libnpm'); // $ExpectType ReadWriteStream
-search.stream('libnpm', opts); // $ExpectType ReadWriteStream
+search.stream('libnpm'); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+search.stream('libnpm', opts); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>

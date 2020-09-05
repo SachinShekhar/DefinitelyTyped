@@ -2,7 +2,7 @@ import gulpResponsiveImages = require('gulp-responsive-images');
 
 gulpResponsiveImages(); // $ExpectError
 
-gulpResponsiveImages({});       // $ExpectType Transform
+gulpResponsiveImages({});       // $ExpectType Transform<BufferOrString, BufferOrString>
 
 gulpResponsiveImages({ 1: "abcd" }); // $ExpectError
 

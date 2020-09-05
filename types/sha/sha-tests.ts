@@ -84,7 +84,7 @@ sha.getSync('./file', { error: true }); // $ExpectError
 ////////////////////////////////////////////////////////////////////////////////////////
 // sha.stream
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 const s = sha.stream('1a2b3c4d');
 
 fs.createReadStream('./file')
@@ -92,6 +92,6 @@ fs.createReadStream('./file')
     .pipe(fs.createWriteStream('dest'));
 
 sha.stream({ name: 'hello' }); // $ExpectError
-sha.stream('1a2b3c4d', {}); // $ExpectType Transform
-sha.stream('1a2b3c4d', { algorithm }); // $ExpectType Transform
+sha.stream('1a2b3c4d', {}); // $ExpectType Transform<BufferOrString, BufferOrString>
+sha.stream('1a2b3c4d', { algorithm }); // $ExpectType Transform<BufferOrString, BufferOrString>
 sha.stream('1a2b3c4d', { error: true }); // $ExpectError

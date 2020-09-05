@@ -74,7 +74,7 @@ fetch('/'); // $ExpectType Promise<Response>
 fetch('/', opts); // $ExpectType Promise<Response>
 fetch.json('/'); // $ExpectType Promise<Record<string, unknown>>
 fetch.json('/', opts); // $ExpectType Promise<Record<string, unknown>>
-fetch.json.stream('/-/user/zkat/package', '$*'); // $ExpectType ReadWriteStream
-fetch.json.stream('/-/user/zkat/package', '$*', opts); // $ExpectType ReadWriteStream
+fetch.json.stream('/-/user/zkat/package', '$*'); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+fetch.json.stream('/-/user/zkat/package', '$*', opts); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
 fetch.pickRegistry('npm-registry-fetch@latest'); // $ExpectType string
 fetch.pickRegistry('npm-registry-fetch@latest', opts); // $ExpectType string

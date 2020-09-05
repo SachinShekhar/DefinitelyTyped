@@ -5,11 +5,11 @@ transformer.DEFAULTS; // $ExpectType Options
 transformer.cli([]); // $ExpectType void
 transformer.cli(['one', 'two']); // $ExpectType void
 
-transformer(); // $ExpectType ReadWriteStream
-transformer({ format: 'format' }); // $ExpectType ReadWriteStream
-transformer({ tag: 'tag' }); // $ExpectType ReadWriteStream
-transformer({ mergeMultiline: true }); // $ExpectType ReadWriteStream
-transformer({ mergeMultiline: false }); // $ExpectType ReadWriteStream
-transformer({ timeStamp: true }); // $ExpectType ReadWriteStream
-transformer({ timeStamp : false }); // $ExpectType ReadWriteStream
-transformer(transformer.DEFAULTS); // $ExpectType ReadWriteStream
+transformer(); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer({ format: 'format' }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer({ tag: 'tag' }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer({ mergeMultiline: true }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer({ mergeMultiline: false }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer({ timeStamp: true }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer({ timeStamp : false }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+transformer(transformer.DEFAULTS); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>

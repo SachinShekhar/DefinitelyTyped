@@ -5,13 +5,13 @@ import conventionalChangelogWriter from "conventional-changelog-writer";
 declare const context: conventionalChangelogWriter.Context;
 declare const options: conventionalChangelogWriter.Options;
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 conventionalChangelogWriter();
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 conventionalChangelogWriter(context);
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 conventionalChangelogWriter(context, options);
 
 // $ExpectError

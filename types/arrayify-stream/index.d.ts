@@ -10,6 +10,6 @@ import { Readable } from 'stream';
 /**
  * Converts a Node readable stream into an array that is returned as a promise.
  */
-declare function arrayifyStream(input: Readable): Promise<any[]>;
+declare function arrayifyStream<T = NodeJS.BufferOrString>(input: Readable<T>): Promise<any[]>;
 
 export = arrayifyStream;

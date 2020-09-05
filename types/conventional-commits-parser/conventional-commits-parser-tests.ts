@@ -6,8 +6,8 @@ import conventionalCommitsParser from "conventional-commits-parser";
 namespace Module {
     declare const options: conventionalCommitsParser.Options;
 
-    conventionalCommitsParser(); // $ExpectType Transform
-    conventionalCommitsParser(options); // $ExpectType Transform
+    conventionalCommitsParser(); // $ExpectType Transform<BufferOrString, BufferOrString>
+    conventionalCommitsParser(options); // $ExpectType Transform<BufferOrString, BufferOrString>
 }
 
 namespace Module.sync {

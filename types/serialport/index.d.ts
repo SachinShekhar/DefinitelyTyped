@@ -10,7 +10,7 @@
 
 import * as Stream from 'stream';
 
-declare class SerialPort extends Stream.Duplex {
+declare class SerialPort extends Stream.Duplex<string| number[] | Buffer> {
     constructor(path: string, callback?: SerialPort.ErrorCallback);
     constructor(path: string, options?: SerialPort.OpenOptions, callback?: SerialPort.ErrorCallback);
 

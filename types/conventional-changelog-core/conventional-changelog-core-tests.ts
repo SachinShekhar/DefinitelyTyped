@@ -10,16 +10,16 @@ namespace Module {
     declare const parserOpts: conventionalChangelogCore.ParserOptions;
     declare const writerOpts: conventionalChangelogCore.WriterOptions;
 
-    // $ExpectType Readable
+    // $ExpectType Readable<BufferOrString>
     conventionalChangelogCore();
-    // $ExpectType Readable
+    // $ExpectType Readable<BufferOrString>
     conventionalChangelogCore(options);
-    // $ExpectType Readable
+    // $ExpectType Readable<BufferOrString>
     conventionalChangelogCore(options, context);
-    // $ExpectType Readable
+    // $ExpectType Readable<BufferOrString>
     conventionalChangelogCore(options, context, gitRawCommitsOpts);
-    // $ExpectType Readable
+    // $ExpectType Readable<BufferOrString>
     conventionalChangelogCore(options, context, gitRawCommitsOpts, parserOpts);
-    // $ExpectType Readable
+    // $ExpectType Readable<BufferOrString>
     conventionalChangelogCore(options, context, gitRawCommitsOpts, parserOpts, writerOpts);
 }

@@ -6,7 +6,7 @@ TOML.parse.async('{}'); // $ExpectType Promise<Record<string, any>>
 TOML.parse.async('{}', {}); // $ExpectType Promise<Record<string, any>>
 TOML.parse.async('{}', {blocksize: 1}); // $ExpectType Promise<Record<string, any>>
 
-TOML.parse.stream(); // $ExpectType Transform
+TOML.parse.stream(); // $ExpectType Transform<BufferOrString, BufferOrString>
 TOML.parse.stream(new Readable()); // $ExpectType Promise<Record<string, any>>
 
 TOML.stringify({}); // $ExpectType string
@@ -24,7 +24,7 @@ parseAsync('{}', {}); // $ExpectType Promise<Record<string, any>>
 parseAsync('{}', {blocksize: 1}); // $ExpectType Promise<Record<string, any>>
 
 import parseStream = require('@iarna/toml/parse-stream');
-parseStream(); // $ExpectType Transform
+parseStream(); // $ExpectType Transform<BufferOrString, BufferOrString>
 parseStream(new Readable()); // $ExpectType Promise<Record<string, any>>
 
 import stringify = require('@iarna/toml/stringify');

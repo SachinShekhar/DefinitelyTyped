@@ -1,9 +1,9 @@
 import saxStream = require('sax-stream');
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 saxStream({ tag: '' });
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 saxStream({
     tag: '',
     highWaterMark: 1,

@@ -67,5 +67,5 @@ p.pause();
 
 const writable = new stream.Writable();
 
-// $ExpectType Writable
+// $ExpectType Writable<BufferOrString>
 p.pipe(writable);

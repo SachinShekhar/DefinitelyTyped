@@ -37,15 +37,15 @@ extract('pacote', './', opts); // $ExpectType Promise<void>
 
 pacote.tarball('pacote'); // $ExpectType Promise<Buffer>
 pacote.tarball('pacote', opts); // $ExpectType Promise<Buffer>
-pacote.tarball.stream('pacote'); // $ExpectType PassThrough
-pacote.tarball.stream('pacote', opts); // $ExpectType PassThrough
+pacote.tarball.stream('pacote'); // $ExpectType PassThrough<BufferOrString, BufferOrString>
+pacote.tarball.stream('pacote', opts); // $ExpectType PassThrough<BufferOrString, BufferOrString>
 pacote.tarball.toFile('pacote', './pacote.tgz'); // $ExpectType Promise<void>
 pacote.tarball.toFile('pacote', './pacote.tgz', opts); // $ExpectType Promise<void>
 
 tarball('pacote'); // $ExpectType Promise<Buffer>
 tarball('pacote', opts); // $ExpectType Promise<Buffer>
-tarball.stream('pacote'); // $ExpectType PassThrough
-tarball.stream('pacote', opts); // $ExpectType PassThrough
+tarball.stream('pacote'); // $ExpectType PassThrough<BufferOrString, BufferOrString>
+tarball.stream('pacote', opts); // $ExpectType PassThrough<BufferOrString, BufferOrString>
 tarball.toFile('pacote', './pacote.tgz'); // $ExpectType Promise<void>
 tarball.toFile('pacote', './pacote.tgz', opts); // $ExpectType Promise<void>
 

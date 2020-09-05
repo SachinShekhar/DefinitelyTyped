@@ -14,4 +14,4 @@ export interface ParseOptions {
 
 export function parse(opts?: ParseOptions): ThroughStream;
 
-export function stringify(opts?: DuplexOptions): Transform;
+export function stringify<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString>(opts?: DuplexOptions<TChunkIn, TChunkOut>): Transform<TChunkIn, TChunkOut>;

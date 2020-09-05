@@ -1,6 +1,6 @@
 import gulpJsonValidator = require("gulp-json-validator");
 
-gulpJsonValidator(); // $ExpectType ReadWriteStream
-gulpJsonValidator({}); // $ExpectType ReadWriteStream
-gulpJsonValidator({ allowDuplicatedKeys: true }); // $ExpectType ReadWriteStream
-gulpJsonValidator({ allowDuplicatedKeys: false }); // $ExpectType ReadWriteStream
+gulpJsonValidator(); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+gulpJsonValidator({}); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+gulpJsonValidator({ allowDuplicatedKeys: true }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>
+gulpJsonValidator({ allowDuplicatedKeys: false }); // $ExpectType ReadWriteStream<BufferOrString, BufferOrString>

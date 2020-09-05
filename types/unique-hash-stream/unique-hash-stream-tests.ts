@@ -5,7 +5,7 @@ unique(doc => {
     doc; // $ExpectType any
     return 'foo';
 });
-stream; // $ExpectType Transform
+stream; // $ExpectType Transform<BufferOrString, BufferOrString>
 unique.Unique; // $ExpectType typeof Transform
 unique.calculate; // $ExpectType (doc: any) => string
 

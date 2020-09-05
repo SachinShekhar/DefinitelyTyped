@@ -16,4 +16,4 @@ stream.on("end", () => "end of stream");
 stream = transform(10, { objectMode: false },
     (data, callback) => callback(undefined, data));
 
-stream = transform({ ordered: false }, (data, callback) => callback(new Error("fail"), null));
+stream = transform({ ordered: false }, (data, callback) => callback(new Error("fail")));
