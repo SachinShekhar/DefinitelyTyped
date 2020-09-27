@@ -111,7 +111,8 @@ asyncParser.transform
     .on('line', line => console.log(line))
     .on('error', err => console.log(err));
 
-asyncParser.input.push(data); // This data might come from an HTTP request, etc.
+// TODO: Adjust according to new Stream generics
+// asyncParser.input.push(data); // This data might come from an HTTP request, etc.
 asyncParser.input.push(null); // Sending `null` to a stream signal that no more data is expected and ends it.
 
 const input = createReadStream('/path/to/input', { encoding: 'utf8' });

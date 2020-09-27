@@ -8,10 +8,11 @@ function testTypes() {
     const _transformOpts: stream.TransformOptions = ANY as RStream.TransformOptions;
     const _duplexOpts: stream.DuplexOptions = ANY as RStream.DuplexOptions;
 
-    const _readable: typeof stream.Readable = RStream.Readable;
-    const _writable: typeof stream.Writable = RStream.Writable;
-    const _transform: typeof stream.Transform = RStream.Transform;
-    const _duplex: typeof stream.Duplex = RStream.Duplex;
+    // TODO: Update according to new Stream generics.
+    // const _readable: typeof stream.Readable = RStream.Readable;
+    // const _writable: typeof stream.Writable = RStream.Writable;
+    // const _transform: typeof stream.Transform = RStream.Transform;
+    // const _duplex: typeof stream.Duplex = RStream.Duplex;
 }
 
 function test() {

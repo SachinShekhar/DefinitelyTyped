@@ -1,0 +1,13 @@
+types\highland\highland-tests.ts
+types\json2csv\json2csv-tests.ts
+types\list-stream\test\import-tests.ts
+types\list-stream\test\require-tests.ts
+types\msgpack-lite\msgpack-lite-tests.ts
+types\n3\n3-tests.ts
+types\oauth\oauth-tests.ts
+types\readable-stream\readable-stream-tests.ts
+types\readable-stream\index.d.ts
+types\ssri\ssri-tests.ts
+types\stream-chain\stream-chain-tests.
+types\vinyl\vinyl-tests.ts
+types\stream-chain\index.d.ts

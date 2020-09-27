@@ -1,9 +1,9 @@
 import * as Chain from 'stream-chain';
 import { Readable, Writable, Transform } from 'stream';
 
-const streamFromArray = (array: number[]): Readable => {
+const streamFromArray = (array: number[]): Readable<number | null> => {
     let index = 0;
-    return new Readable({
+    return new Readable<number | null>({
         objectMode: true,
         read(): void {
             this.push(index < array.length ? array[index++] : null);
@@ -11,8 +11,8 @@ const streamFromArray = (array: number[]): Readable => {
     });
 };
 
-const streamToArray = (array: number[]): Writable =>
-    new Writable({
+const streamToArray = (array: number[]): Writable<number> =>
+    new Writable<number>({
         objectMode: true,
         write(chunk, encoding, callback) {
             array.push(chunk);
@@ -23,7 +23,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // generic function
 
-    const chain = new Chain([(x: number) => 2 * x]);
+    const chain = new Chain<number, number>([(x: number) => 2 * x]);
     const out1: number[] = [];
     const out2: number[] = [];
 
@@ -36,7 +36,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // generator
 
-    const chain = new Chain([
+    const chain = new Chain<number, number>([
         // function*(x: number): IterableIterator<number> {
         //     const n = +x;
         //     yield 2 * n - 1;
@@ -55,7 +55,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // async function
 
-    const chain = new Chain([
+    const chain = new Chain<number, number>([
         // async (x: number) => Promise.resolve(x)
     ]);
     const out1: number[] = [];
@@ -70,7 +70,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // function that returns an array of values
 
-    const chain = new Chain([(x: number) => [x, x + 1]]);
+    const chain = new Chain<number, number>([(x: number) => [x, x + 1]]);
     const out1: number[] = [];
     const out2: number[] = [];
 
@@ -83,7 +83,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // chain of functions
 
-    const chain = new Chain([(x: number) => x * x, (x: number) => 2 * x + 1]);
+    const chain = new Chain<number, number>([(x: number) => x * x, (x: number) => 2 * x + 1]);
     const out1: number[] = [];
     const out2: number[] = [];
 
@@ -96,7 +96,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // Transform + a function
 
-    const chain = new Chain([
+    const chain = new Chain<number, number>([
         new Transform({
             objectMode: true,
             transform(x: number, _: string | undefined, callback: (error: Error | undefined, chunk: any) => void) {
@@ -117,7 +117,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // factory
 
-    const chain = Chain.chain([(x: number) => 2 * x]);
+    const chain = Chain.chain<number, number>([(x: number) => 2 * x]);
     const out1: number[] = [];
     const out2: number[] = [];
 
@@ -130,7 +130,7 @@ const streamToArray = (array: number[]): Writable =>
 {
     // include Readable
 
-    const chain = new Chain([streamFromArray([1, 2, 3]), (x: number) => 2 * x]);
+    const chain = new Chain<number, number>([streamFromArray([1, 2, 3]), (x: number) => 2 * x]);
     const out1: number[] = [];
     const out2: number[] = [];
 

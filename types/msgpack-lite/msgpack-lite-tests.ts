@@ -30,8 +30,9 @@ function writingToStream() {
   encodeStream.pipe(writeStream);
 
   // send multiple objects to stream
-  encodeStream.write({foo: "bar"});
-  encodeStream.write({baz: "qux"});
+  // TODO: Update according to new Stream generics
+  // encodeStream.write({foo: "bar"});
+  // encodeStream.write({baz: "qux"});
 
   // call this once you're done writing to the stream.
   encodeStream.end();

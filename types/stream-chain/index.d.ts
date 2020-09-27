@@ -8,13 +8,13 @@ import { Readable, Writable, Duplex, Transform, DuplexOptions } from 'stream';
 
 export = Chain;
 
-type TransformFunction = (chunk: any, encoding?: string) => any;
+type TransformFunction<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString> = (chunk: TChunkIn, encoding?: string) => TChunkOut;
 
-type Stream = Readable | Writable | Duplex | Transform;
-type StreamItem = Stream | TransformFunction;
+type Stream<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString> = Readable<TChunkOut> | Writable<TChunkIn> | Duplex<TChunkIn, TChunkOut> | Transform<TChunkIn, TChunkOut>;
+type StreamItem<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString> = Stream<TChunkIn, TChunkOut> | TransformFunction<TChunkIn, TChunkOut>;
 
-declare class Chain extends Duplex {
-    constructor(fns: StreamItem[], options?: Chain.ChainOptions);
+declare class Chain<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString> extends Duplex<TChunkIn, TChunkOut> {
+    constructor(fns: StreamItem<TChunkIn, TChunkOut>[], options?: Chain.ChainOptions<TChunkIn, TChunkOut>);
 
     input: Stream;
     output: Stream;
@@ -22,9 +22,9 @@ declare class Chain extends Duplex {
 }
 
 declare namespace Chain {
-    interface ChainOptions extends DuplexOptions {
+    interface ChainOptions<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString> extends DuplexOptions<TChunkIn, TChunkOut> {
         skipEvents?: boolean;
     }
 
-    function chain(fns: StreamItem[], options?: ChainOptions): Chain;
+    function chain<TChunkIn = NodeJS.BufferOrString, TChunkOut = NodeJS.BufferOrString>(fns: StreamItem[], options?: ChainOptions<TChunkIn, TChunkOut>): Chain<TChunkIn, TChunkOut>;
 }

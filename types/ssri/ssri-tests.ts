@@ -167,9 +167,9 @@ ssri.checkStream(createReadStream("index.js"), integrityString, {
     Promise,
 });
 
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 ssri.integrityStream();
-// $ExpectType Transform
+// $ExpectType Transform<BufferOrString, BufferOrString>
 ssri.integrityStream({
     single: true,
     strict: true,

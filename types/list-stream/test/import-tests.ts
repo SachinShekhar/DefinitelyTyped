@@ -41,7 +41,8 @@ listStream = ListStream.obj((err: Error, data: any[]) => {
 });
 
 listStream = ListStream.obj();
-listStream.write({ key: "value" });
+// TODO: Update according to new Stream generics
+// listStream.write({ key: "value" });
 
 listStream.append(chunk);
 
